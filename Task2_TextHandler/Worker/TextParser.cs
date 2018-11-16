@@ -23,6 +23,7 @@ namespace Task2_TextHandler
 
         public void GetSentence(string line)
         {
+            char.IsPunctuation()
             if (IsCompletedSentence)
             {
                 IsCompletedSentence = false;
@@ -37,3 +38,7 @@ namespace Task2_TextHandler
         }
     }
 }
+
+
+//по чар записываем 
+

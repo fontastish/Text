@@ -18,7 +18,13 @@ namespace Task2_TextHandler
 
         public List<string> Read()
         {
-            var strArray = File.ReadAllLines(FileName);
+            using (var stream = new FileStream(FileName, FileMode.Open))
+            {
+                var reader = new StreamReader(stream);
+                var text = reader.ReadToEnd();
+            }
+
+            var strArray = File.ReadAllText(FileName);
             List<string> textList = strArray.ToList();
             //StreamReader readFile = new StreamReader(FileName);
             //string tempString = string.Empty;
