@@ -9,7 +9,7 @@ namespace Task2_TextHandler.TextObject
     public class Symbol
     {
 
-        public string Char { get; }
+        public string Char { get; set; }
 
 
         public Symbol(string symbol)

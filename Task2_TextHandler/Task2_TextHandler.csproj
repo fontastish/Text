@@ -45,6 +45,7 @@
     <Compile Include="Interfaces\IFileReader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextObject\PunctuationSign.cs" />
     <Compile Include="TextObject\Sentence.cs" />
     <Compile Include="TextObject\Symbol.cs" />
     <Compile Include="TextObject\Text.cs" />

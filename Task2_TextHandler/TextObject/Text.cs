@@ -8,13 +8,21 @@ namespace Task2_TextHandler.TextObject
 {
     public class Text
     {
-        public List<Sentence> TextList { get; }
+        public ICollection<Sentence> TextCollection { get; set; }
 
-        public Text(List<Sentence> textList)
+        public Text(List<Sentence> textCollection)
         {
-            TextList = textList;
+            TextCollection = textCollection;
         }
 
+        public Text()
+        {
+            TextCollection = new List<Sentence>();
+        }
 
+        public void AddSentence(Sentence sentence)
+        {
+            TextCollection.Add(sentence);
+        }
     }
 }

@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Task2_TextHandler.TextObject
 {
-    public class Sentence
+    class PunctuationSign
     {
-        public ICollection<Word> SentenceList { get; set; }
-
-        public Sentence(ICollection<Word> sentenceList)
+        public string Sing { get; set; }
+        
+        public PunctuationSign(string sing)
         {
-            SentenceList = sentenceList;
+            Sing = sing;
         }
+
+
     }
 }
