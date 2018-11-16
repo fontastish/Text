@@ -20,35 +20,6 @@ namespace Task2_TextHandler
             _text = text;
         }
 
-        //public void Parse()
-        //{
-        //    Text text = new Text();
-        //    //bool isSentence = false;
-        //    //bool isPunctuationSing = false;
-        //    //bool isWord = false;
-        //    StringBuilder sentenceBuilder = new StringBuilder();
-        //    for (var i = 0; i < _text.Length; i++)
-        //    {
-        //        while (char.IsLetter(_text[i]))
-        //        {
-        //            Sentence sentence = new Sentence();
-        //            Word word;
-        //            sentenceBuilder.Append(_text[i]);
-        //            i++;
-        //            if (!char.IsLetter(_text[i]))
-        //            {
-        //                sentence.AddSentenceElement(new Word(sentenceBuilder.ToString()));
-        //            }
-        //        }
-
-        //        while (_text[i] = )
-        //        {
-
-        //        }
-
-        //    }
-        //}
-
         public void Parse()
         {
             Text text = new Text();
@@ -73,16 +44,19 @@ namespace Task2_TextHandler
                     }
                 }
 
-                while (char.IsPunctuation(_text[i]) && (i!=_text.Length-1))
+                while (char.IsPunctuation(_text[i]))
                 {
                     sentenceBuilder.Append(_text[i]);
                     if(_text[i] == '.' || _text[i] == '!' || _text[i]=='?')
                         isCompletedSent = true;
                     i++;
-                    if (!char.IsPunctuation(_text[i]))
+                    if (i == _text.Length)
+                        i--;
+                    if (!char.IsPunctuation(_text[i]) || (i+1)==_text.Length)
                     {
                         sentence.AddSentenceElement(new PunctuationSign(sentenceBuilder.ToString(), isCompletedSent));
                         sentenceBuilder.Clear();
+                        break;
                     }
                 }
                 if (isCompletedSent)
