@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task2_TextHandler.TextObject
 {
-    public class Word
+    public class Word : ISentenceElement
     {
         public string WordString { get; set; }
 

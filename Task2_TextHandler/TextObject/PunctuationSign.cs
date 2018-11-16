@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -7,23 +8,16 @@ using System.Threading.Tasks;
 
 namespace Task2_TextHandler.TextObject
 {
-    class PunctuationSign
+    class PunctuationSign : ISentenceElement
     {
-        public string Sing { get; set; }
-        //private Regex regex = new Regex(@"\b[а-я-[е]]{1,}\b");
-        private string pattern = @"[\W^ ]";
+        public string Sign { get; set; }
+        public bool EndSentence { get; set; }
 
 
-        public PunctuationSign(string sing)
+        public PunctuationSign(string sign,bool endSentence)
         {
-            Sing = sing;
-        }
-
-        public bool IsSing(string sing)
-        {
-            if (Regex.IsMatch(sing, pattern))
-                return true;
-            return false;
+            Sign = sign;
+            EndSentence = endSentence;
         }
 
     }

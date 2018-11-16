@@ -11,30 +11,22 @@ namespace Task2_TextHandler
     {
         public string FileName { get; set; }
 
-        TextReader(string fileName)
+        public TextReader(string fileName)
         {
             FileName = fileName;
         }
 
-        public List<string> Read()
+        public string Read()
         {
-            using (var stream = new FileStream(FileName, FileMode.Open))
+            string text;
+            using (var stream = new FileStream(FileName, FileMode.Open))   // filestream не управляемый ресурс, поэтому мы должны его задиспосзит(прочитать подробнее про using)
             {
                 var reader = new StreamReader(stream);
-                var text = reader.ReadToEnd();
+                text = reader.ReadToEnd();
             }
 
-            var strArray = File.ReadAllText(FileName);
-            List<string> textList = strArray.ToList();
-            //StreamReader readFile = new StreamReader(FileName);
-            //string tempString = string.Empty;
-            // while (!readFile.EndOfStream)
-            // {
-            //     tempString = readFile.ReadLine();
-            //     textList.Add(tempString);
-            // }
-            // readFile.Close();
-            return textList;
+            //return text.Trim(new char[] {'\r', '\n'});
+            return text.Replace("\r\n", " ");
         }
     }
 }

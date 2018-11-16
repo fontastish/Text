@@ -13,11 +13,9 @@ namespace Task2_TextHandler
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            PunctuationSign sing = new PunctuationSign("a");
-            Console.WriteLine(sing.IsSing(".."));
+            TextReader read = new TextReader("input.txt");
+            TextParser parser = new TextParser(read.Read());
+            parser.Parse();
             Console.ReadKey();
         }
     }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Task2_TextHandler
 {
-    interface IFileReader
+    public interface ISentenceElement
     {
-        string Read();
+
     }
 }

@@ -8,11 +8,20 @@ namespace Task2_TextHandler.TextObject
 {
     public class Sentence
     {
-        public ICollection<Word> SentenceList { get; set; }
+        public ICollection<ISentenceElement> SentenceList { get; set; }
 
-        public Sentence(ICollection<Word> sentenceList)
+        public Sentence(ICollection<ISentenceElement> sentenceList)
         {
             SentenceList = sentenceList;
+        }
+        public Sentence()
+        {
+            SentenceList = new List<ISentenceElement>();
+        }
+
+        public void AddSentenceElement(ISentenceElement element)
+        {
+            SentenceList.Add(element);
         }
     }
 }
