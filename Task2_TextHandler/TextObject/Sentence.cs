@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,12 +9,9 @@ namespace Task2_TextHandler.TextObject
 {
     public class Sentence
     {
-        public ICollection<ISentenceElement> SentenceList { get; set; }
+        public List<ISentenceElement> SentenceList { get; }
+        public int CountWords { get; set; } = 0;
 
-        public Sentence(ICollection<ISentenceElement> sentenceList)
-        {
-            SentenceList = sentenceList;
-        }
         public Sentence()
         {
             SentenceList = new List<ISentenceElement>();
@@ -22,6 +20,14 @@ namespace Task2_TextHandler.TextObject
         public void AddSentenceElement(ISentenceElement element)
         {
             SentenceList.Add(element);
+            if (element is Word)
+                CountWords++;
         }
+
+        public void GetCountWords()
+        {
+            var onlyWords = SentenceList.FindAll(x => x is Word);
+            CountWords = onlyWords.Count;
+        }           
     }
 }

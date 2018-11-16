@@ -8,7 +8,7 @@ namespace Task2_TextHandler.TextObject
 {
     public class Word : ISentenceElement
     {
-        public string WordString { get; set; }
+        public string WordString { get; }
 
         public Word(string wordString)
         {

@@ -15,7 +15,9 @@ namespace Task2_TextHandler
         {
             TextReader read = new TextReader("input.txt");
             TextParser parser = new TextParser(read.Read());
-            parser.Parse();
+            var temp = parser.Parse();
+
+
             Console.ReadKey();
         }
     }

@@ -9,7 +9,7 @@ namespace Task2_TextHandler
 {
     public class TextReader : IFileReader
     {
-        public string FileName { get; set; }
+        public string FileName { get; }
 
         public TextReader(string fileName)
         {
@@ -19,13 +19,13 @@ namespace Task2_TextHandler
         public string Read()
         {
             string text;
-            using (var stream = new FileStream(FileName, FileMode.Open))   // filestream не управляемый ресурс, поэтому мы должны его задиспосзит(прочитать подробнее про using)
+            using (var stream = new FileStream(FileName, FileMode.Open))   // filestream не управляемый ресурс,
+                                                                           // поэтому мы должны его задиспосзит(прочитать подробнее про using)
             {
                 var reader = new StreamReader(stream);
                 text = reader.ReadToEnd();
             }
 
-            //return text.Trim(new char[] {'\r', '\n'});
             return text.Replace("\r\n", " ");
         }
     }

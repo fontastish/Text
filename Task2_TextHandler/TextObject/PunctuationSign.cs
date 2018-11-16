@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Task2_TextHandler.TextObject
 {
-    class PunctuationSign : ISentenceElement
+    public class PunctuationSign : ISentenceElement
     {
-        public string Sign { get; set; }
-        public bool EndSentence { get; set; }
+        public string Sign { get; }
+        public bool EndSentence { get; }
 
 
         public PunctuationSign(string sign,bool endSentence)

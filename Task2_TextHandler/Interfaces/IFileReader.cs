@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task2_TextHandler
 {
-    interface IFileReader
+    public interface IFileReader
     {
         string Read();
     }

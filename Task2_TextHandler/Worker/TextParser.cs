@@ -9,67 +9,63 @@ namespace Task2_TextHandler
 {
     public class TextParser
     {
-        //public bool IsCompletedSentence { get; set; } = false;
-        //public int Position { get; set; } = 0;
-        //public int LastPosition { get; set; }
-        //public StringBuilder SentenceBuilder { get; set; }
-        private string _text;
+        public string Text { get; }
 
         public TextParser(string text)
         {
-            _text = text;
+            Text = text;
         }
 
-        public void Parse()
+        public Text Parse()
         {
-            Text text = new Text();
+            Text text = new Text();                     // надо везде подумать над именами
             Sentence sentence = new Sentence();
             StringBuilder sentenceBuilder = new StringBuilder();
             bool isCompletedSent = true;
-            for (var i = 0; i < _text.Length; i++)
+            for (var i = 0; i < Text.Length; i++)
             {
-                if (isCompletedSent)
+                if (isCompletedSent)                    //создаём новое предложение
                 {
                     sentence = new Sentence();
                     isCompletedSent = false;
                 }
-                while (char.IsLetter(_text[i]))
+
+                while (char.IsLetter(Text[i]))      //читаем слово и добавляем его в предложение
                 {
-                    sentenceBuilder.Append(_text[i]);
+                    sentenceBuilder.Append(Text[i]);
                     i++;
-                    if (!char.IsLetter(_text[i]))
+                    if (!char.IsLetter(Text[i]))
                     {
                         sentence.AddSentenceElement(new Word(sentenceBuilder.ToString()));
                         sentenceBuilder.Clear();
                     }
                 }
 
-                while (char.IsPunctuation(_text[i]))
+                while (char.IsPunctuation(Text[i]))                 //читаем знак и добавляем в преложение  
                 {
-                    sentenceBuilder.Append(_text[i]);
-                    if(_text[i] == '.' || _text[i] == '!' || _text[i]=='?')
+                    sentenceBuilder.Append(Text[i]);
+                    if (Text[i] == '.' || Text[i] == '!' || Text[i] == '?')         //знак в конце предложения
                         isCompletedSent = true;
                     i++;
-                    if (i == _text.Length)
+                    if (i == Text.Length)                                               //проверка чтобы не было выхода с массива
                         i--;
-                    if (!char.IsPunctuation(_text[i]) || (i+1)==_text.Length)
+                    if (!char.IsPunctuation(Text[i]) || (i + 1) == Text.Length)
                     {
                         sentence.AddSentenceElement(new PunctuationSign(sentenceBuilder.ToString(), isCompletedSent));
                         sentenceBuilder.Clear();
                         break;
                     }
                 }
-                if (isCompletedSent)
+
+                if (isCompletedSent)                            //добавляем готовое преложение, меняем переменную для создания нового
                     text.AddSentence(sentence);
             }
+
+            return text;
         }
 
 
 
     }
 }
-
-
-
-//по чар записываем 
 
