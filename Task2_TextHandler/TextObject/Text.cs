@@ -15,6 +15,8 @@ namespace Task2_TextHandler.TextObject
             TextCollection = textCollection;
         }
 
+            
+
         public List<string> FindWordsOfPredeterminedLength(int wordLength)
         {
             List<string> words = new List<string>();

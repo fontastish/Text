@@ -43,7 +43,7 @@ namespace Task2_TextHandler.TextObject
             var strout = string.Empty;
             foreach (var x in SentenceList)
             {
-                strout +=x.ToString();
+                strout +=x.GetSentenceElementString();
             }
 
             return strout;

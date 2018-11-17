@@ -28,7 +28,7 @@ namespace Task2_TextHandler.TextObject
             return false;
         }
 
-        public override string ToString()
+        public string GetSentenceElementString()
         {
             return Sign;
         }

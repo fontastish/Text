@@ -15,7 +15,7 @@ namespace Task2_TextHandler.TextObject
             WordString = wordString;
         }
 
-        public override string ToString()
+        public string GetSentenceElementString()
         {
             return " " + WordString;
         }

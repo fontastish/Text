@@ -8,6 +8,6 @@ namespace Task2_TextHandler
 {
     public interface ISentenceElement
     {
-
+        string GetSentenceElementString();
     }
 }
