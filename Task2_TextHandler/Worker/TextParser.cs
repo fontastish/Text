@@ -23,7 +23,7 @@ namespace Task2_TextHandler
             StringBuilder sentenceBuilder = new StringBuilder();
             bool isCompletedSent = true;
             for (var i = 0; i < Text.Length; i++)
-            {
+            {   
                 if (isCompletedSent)                    //создаём новое предложение
                 {
                     sentence = new Sentence();

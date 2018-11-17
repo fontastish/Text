@@ -16,12 +16,17 @@ namespace Task2_TextHandler
             TextReader read = new TextReader("input.txt");
             TextParser parser = new TextParser(read.Read());
             var temp = parser.Parse();
-
+            //1
             foreach (var x in temp.SortSentences())
             {
                 Console.WriteLine(x);
             }
-
+            //2
+            foreach (var x in temp.FindWordsOfPredeterminedLength(7))
+            {
+                Console.WriteLine(x);
+            }
+            //3
             Console.ReadKey();
         }
     }

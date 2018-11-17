@@ -24,10 +24,29 @@ namespace Task2_TextHandler.TextObject
                 CountWords++;
         }
 
-        public void GetCountWords()
+        public void GetCountWords()                                                        
         {
             var onlyWords = SentenceList.FindAll(x => x is Word);
             CountWords = onlyWords.Count;
+        }
+
+        public bool IsQuestionSentences()
+        {
+            var s = SentenceList.FindLast(x => x is PunctuationSign);
+            if (((PunctuationSign) s).IsQuestionMark())
+                return true;
+            return false;
+        }
+
+        public override string ToString()
+        {
+            var strout = string.Empty;
+            foreach (var x in SentenceList)
+            {
+                strout +=x.ToString();
+            }
+
+            return strout;
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -20,5 +21,17 @@ namespace Task2_TextHandler.TextObject
             EndSentence = endSentence;
         }
 
+        public bool IsQuestionMark()
+        {
+            if (Sign.Contains("?"))
+                return true;
+            return false;
+        }
+
+        public override string ToString()
+        {
+            return Sign;
+        }
     }
+
 }

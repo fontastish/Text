@@ -15,6 +15,25 @@ namespace Task2_TextHandler.TextObject
             TextCollection = textCollection;
         }
 
+        public List<string> FindWordsOfPredeterminedLength(int wordLength)
+        {
+            List<string> words = new List<string>();
+            foreach (var sentence in TextCollection)
+            {
+                if (sentence.IsQuestionSentences())
+                {
+                    foreach (var x in sentence.SentenceList.FindAll(x => x is Word).Cast<Word>())
+                    {
+                        if (x.WordString.Length == wordLength)
+                            words.Add(x.WordString);
+                    }
+                }
+
+            }
+
+            return words;
+        }
+
         public Text()
         {
             TextCollection = new List<Sentence>();
@@ -32,7 +51,13 @@ namespace Task2_TextHandler.TextObject
 
         public override string ToString()
         {
-            //return null;
+            var strout = string.Empty;
+            foreach (var x in TextCollection)
+            {
+                strout += " " + x.ToString();
+            }
+                
+            return strout;
         }
     }
 }
