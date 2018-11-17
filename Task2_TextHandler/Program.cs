@@ -17,6 +17,10 @@ namespace Task2_TextHandler
             TextParser parser = new TextParser(read.Read());
             var temp = parser.Parse();
 
+            foreach (var x in temp.SortSentences())
+            {
+                Console.WriteLine(x);
+            }
 
             Console.ReadKey();
         }

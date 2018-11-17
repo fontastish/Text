@@ -14,5 +14,7 @@ namespace Task2_TextHandler.TextObject
         {
             WordString = wordString;
         }
+
+
     }
 }

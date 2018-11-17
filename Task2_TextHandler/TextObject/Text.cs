@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Task2_TextHandler.TextObject
 {
-    public class Text
+    public class Text 
     {
-        public ICollection<Sentence> TextCollection { get; set; }
+        public List<Sentence> TextCollection { get; set; }
 
         public Text(List<Sentence> textCollection)
         {
@@ -23,6 +23,16 @@ namespace Task2_TextHandler.TextObject
         public void AddSentence(Sentence sentence)
         {
             TextCollection.Add(sentence);
+        }
+
+        public IOrderedEnumerable<Sentence> SortSentences()
+        {
+            return TextCollection.OrderBy(x => x.CountWords);
+        }
+
+        public override string ToString()
+        {
+            //return null;
         }
     }
 }

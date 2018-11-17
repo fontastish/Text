@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IFileReader.cs" />
+    <Compile Include="Interfaces\ISentence.cs" />
     <Compile Include="Interfaces\ISentenceElement.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

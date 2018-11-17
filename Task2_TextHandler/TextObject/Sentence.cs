@@ -28,6 +28,6 @@ namespace Task2_TextHandler.TextObject
         {
             var onlyWords = SentenceList.FindAll(x => x is Word);
             CountWords = onlyWords.Count;
-        }           
+        }
     }
 }
