@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task2_TextHandler.TextObject
 {
-    public class Text 
+    public class Text : ICloneable
     {
         public List<Sentence> TextCollection { get; set; }
 
@@ -15,7 +15,24 @@ namespace Task2_TextHandler.TextObject
             TextCollection = textCollection;
         }
 
-            
+        public Text()
+        {
+            TextCollection = new List<Sentence>();
+        }
+
+        public void RemoveWordsWithFirstConsonant(int wordLenght)
+        {
+            foreach (var sentence in TextCollection)
+            {
+                foreach (var x in sentence.SentenceList.FindAll(x=>x is Word).Cast<Word>())
+                {
+                    if (x.FirstLetterIsConsonant() == true && x.WordString.Length == wordLenght)
+                        sentence.SentenceList.Remove(x);
+                } 
+            }
+        }
+
+
 
         public List<string> FindWordsOfPredeterminedLength(int wordLength)
         {
@@ -35,12 +52,7 @@ namespace Task2_TextHandler.TextObject
 
             return words;
         }
-
-        public Text()
-        {
-            TextCollection = new List<Sentence>();
-        }
-
+        
         public void AddSentence(Sentence sentence)
         {
             TextCollection.Add(sentence);
@@ -60,6 +72,11 @@ namespace Task2_TextHandler.TextObject
             }
                 
             return strout;
+        }
+
+        public object Clone()
+        {
+            return new Text(this.TextCollection);
         }
     }
 }

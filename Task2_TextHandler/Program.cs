@@ -27,6 +27,10 @@ namespace Task2_TextHandler
                 Console.WriteLine(x);
             }
             //3
+            var copyOfText = (Text) temp.Clone();
+            copyOfText.RemoveWordsWithFirstConsonant(7);
+            Console.WriteLine(temp);
+            Console.WriteLine(copyOfText);
             Console.ReadKey();
         }
     }

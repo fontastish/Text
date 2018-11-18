@@ -19,5 +19,11 @@ namespace Task2_TextHandler.TextObject
         {
             return " " + WordString;
         }
+
+        public bool FirstLetterIsConsonant()
+        {
+            return "aAeEiIoOuUyY".Any(x => WordString[0] == x);
+        }
+
     }
 }
