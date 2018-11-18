@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Task2_TextHandler.Interfaces;
+﻿using Task2_TextHandler.Interfaces;
 
 namespace Task2_TextHandler.TextObject
 {
@@ -16,10 +8,15 @@ namespace Task2_TextHandler.TextObject
         public bool EndSentence { get; }
 
 
-        public PunctuationSign(string sign,bool endSentence)
+        public PunctuationSign(string sign, bool endSentence)
         {
             Sign = sign;
             EndSentence = endSentence;
+        }
+
+        public string GetSentenceElementString()
+        {
+            return Sign;
         }
 
         public bool IsQuestionMark()
@@ -28,11 +25,5 @@ namespace Task2_TextHandler.TextObject
                 return true;
             return false;
         }
-
-        public string GetSentenceElementString()
-        {
-            return Sign;
-        }
     }
-
 }

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 using Task2_TextHandler.Interfaces;
 
 namespace Task2_TextHandler.TextObject
@@ -12,7 +8,7 @@ namespace Task2_TextHandler.TextObject
     public class Sentence : ICloneable
     {
         public List<ISentenceElement> SentenceList { get; }
-        public int CountWords { get; set; } = 0;
+        public int CountWords { get; private set; }
 
 
         public Sentence()
@@ -23,6 +19,14 @@ namespace Task2_TextHandler.TextObject
         public Sentence(List<ISentenceElement> sentenceList)
         {
             SentenceList = sentenceList;
+        }
+
+        public object Clone()
+        {
+            var clone = new List<ISentenceElement>(SentenceList.Count);
+            foreach (var word in SentenceList) clone.Add(word);
+
+            return new Sentence(clone);
         }
 
         public void AddSentenceElement(ISentenceElement element)
@@ -42,26 +46,16 @@ namespace Task2_TextHandler.TextObject
 
         public override string ToString()
         {
-            StringBuilder strout = new StringBuilder();
+            var strout = new StringBuilder();
             foreach (var x in SentenceList)
             {
                 if (x is PunctuationSign)
                     strout.Remove(strout.Length - 1, 1);
                 strout.Append(x.GetSentenceElementString() + ' ');
             }
+
             strout.Remove(strout.Length - 1, 1);
             return strout.ToString();
-        }
-
-        public object Clone()
-        {
-            var clone = new List<ISentenceElement>(SentenceList.Count);
-            foreach (var word in SentenceList)
-            {
-                clone.Add(word);
-            }
-
-            return new Sentence(clone);
         }
     }
 }

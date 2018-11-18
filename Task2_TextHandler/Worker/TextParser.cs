@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using Task2_TextHandler.TextObject;
 
-namespace Task2_TextHandler
+namespace Task2_TextHandler.Worker
 {
     public class TextParser
     {
         public string Text { get; }
+
 
         public TextParser(string text)
         {
@@ -18,19 +15,19 @@ namespace Task2_TextHandler
 
         public Text Parse()
         {
-            Text text = new Text(); // надо везде подумать над именами
-            Sentence sentence = new Sentence();
-            StringBuilder sentenceBuilder = new StringBuilder();
-            bool isCompletedSentence = true;
+            var text = new Text();
+            var sentence = new Sentence();
+            var sentenceBuilder = new StringBuilder();
+            var isCompletedSentence = true;
             for (var i = 0; i < Text.Length; i++)
             {
-                if (isCompletedSentence) //создаём новое предложение
+                if (isCompletedSentence) 
                 {
                     sentence = new Sentence();
                     isCompletedSentence = false;
                 }
 
-                while (char.IsLetter(Text[i])) //читаем слово и добавляем его в предложение
+                while (char.IsLetter(Text[i])) 
                 {
                     sentenceBuilder.Append(Text[i]);
                     i++;
@@ -41,17 +38,18 @@ namespace Task2_TextHandler
                     }
                 }
 
-                while (char.IsPunctuation(Text[i])) //читаем знак и добавляем в преложение  
+                while (char.IsPunctuation(Text[i]))   
                 {
                     sentenceBuilder.Append(Text[i]);
-                    if (Text[i] == '.' || Text[i] == '!' || Text[i] == '?') //знак в конце предложения
+                    if (Text[i] == '.' || Text[i] == '!' || Text[i] == '?') 
                         isCompletedSentence = true;
                     i++;
-                    if (i == Text.Length) //проверка чтобы не было выхода с массива
+                    if (i == Text.Length) 
                         i--;
-                    if (!char.IsPunctuation(Text[i]) || (i + 1) == Text.Length)
+                    if (!char.IsPunctuation(Text[i]) || i + 1 == Text.Length)
                     {
-                        sentence.AddSentenceElement(new PunctuationSign(sentenceBuilder.ToString(), isCompletedSentence));
+                        sentence.AddSentenceElement(
+                            new PunctuationSign(sentenceBuilder.ToString(), isCompletedSentence));
                         sentenceBuilder.Clear();
                         break;
                     }

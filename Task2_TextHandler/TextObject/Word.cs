@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Task2_TextHandler.Interfaces;
 
 namespace Task2_TextHandler.TextObject
 {
     public class Word : ISentenceElement
     {
-        public string WordString { get; set; }
+        public string WordString { get; private set; }
 
 
         public Word(string wordString)
@@ -27,5 +23,9 @@ namespace Task2_TextHandler.TextObject
             return "aAeEiIoOuUyY".Any(x => x != WordString[0]);
         }
 
+        public void Replace(string newValue)
+        {
+            WordString = newValue;
+        }
     }
 }
