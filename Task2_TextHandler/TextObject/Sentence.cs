@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Task2_TextHandler.Interfaces;
 
 namespace Task2_TextHandler.TextObject
 {
@@ -12,6 +13,7 @@ namespace Task2_TextHandler.TextObject
     {
         public List<ISentenceElement> SentenceList { get; }
         public int CountWords { get; set; } = 0;
+
 
         public Sentence()
         {
@@ -40,13 +42,15 @@ namespace Task2_TextHandler.TextObject
 
         public override string ToString()
         {
-            var strout = string.Empty;
+            StringBuilder strout = new StringBuilder();
             foreach (var x in SentenceList)
             {
-                strout +=x.GetSentenceElementString();
+                if (x is PunctuationSign)
+                    strout.Remove(strout.Length - 1, 1);
+                strout.Append(x.GetSentenceElementString() + ' ');
             }
-
-            return strout;
+            strout.Remove(strout.Length - 1, 1);
+            return strout.ToString();
         }
 
         public object Clone()

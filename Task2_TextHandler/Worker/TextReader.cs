@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Task2_TextHandler.Interfaces;
 
 namespace Task2_TextHandler
 {

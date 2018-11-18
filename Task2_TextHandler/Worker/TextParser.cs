@@ -18,19 +18,19 @@ namespace Task2_TextHandler
 
         public Text Parse()
         {
-            Text text = new Text();                     // надо везде подумать над именами
+            Text text = new Text(); // надо везде подумать над именами
             Sentence sentence = new Sentence();
             StringBuilder sentenceBuilder = new StringBuilder();
-            bool isCompletedSent = true;
+            bool isCompletedSentence = true;
             for (var i = 0; i < Text.Length; i++)
-            {   
-                if (isCompletedSent)                    //создаём новое предложение
+            {
+                if (isCompletedSentence) //создаём новое предложение
                 {
                     sentence = new Sentence();
-                    isCompletedSent = false;
+                    isCompletedSentence = false;
                 }
 
-                while (char.IsLetter(Text[i]))      //читаем слово и добавляем его в предложение
+                while (char.IsLetter(Text[i])) //читаем слово и добавляем его в предложение
                 {
                     sentenceBuilder.Append(Text[i]);
                     i++;
@@ -41,31 +41,27 @@ namespace Task2_TextHandler
                     }
                 }
 
-                while (char.IsPunctuation(Text[i]))                 //читаем знак и добавляем в преложение  
+                while (char.IsPunctuation(Text[i])) //читаем знак и добавляем в преложение  
                 {
                     sentenceBuilder.Append(Text[i]);
-                    if (Text[i] == '.' || Text[i] == '!' || Text[i] == '?')         //знак в конце предложения
-                        isCompletedSent = true;
+                    if (Text[i] == '.' || Text[i] == '!' || Text[i] == '?') //знак в конце предложения
+                        isCompletedSentence = true;
                     i++;
-                    if (i == Text.Length)                                               //проверка чтобы не было выхода с массива
+                    if (i == Text.Length) //проверка чтобы не было выхода с массива
                         i--;
                     if (!char.IsPunctuation(Text[i]) || (i + 1) == Text.Length)
                     {
-                        sentence.AddSentenceElement(new PunctuationSign(sentenceBuilder.ToString(), isCompletedSent));
+                        sentence.AddSentenceElement(new PunctuationSign(sentenceBuilder.ToString(), isCompletedSentence));
                         sentenceBuilder.Clear();
                         break;
                     }
                 }
 
-                if (isCompletedSent)                            //добавляем готовое преложение, меняем переменную для создания нового
+                if (isCompletedSentence) //добавляем готовое преложение, меняем переменную для создания нового
                     text.AddSentence(sentence);
             }
 
             return text;
         }
-
-
-
     }
 }
-

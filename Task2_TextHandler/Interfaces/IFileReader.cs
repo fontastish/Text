@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task2_TextHandler
+namespace Task2_TextHandler.Interfaces
 {
     public interface IFileReader
     {

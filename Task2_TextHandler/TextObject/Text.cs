@@ -11,14 +11,15 @@ namespace Task2_TextHandler.TextObject
     {
         public List<Sentence> TextCollection { get; set; }
 
-        public Text(List<Sentence> textCollection)
-        {
-            TextCollection = textCollection;
-        }
 
         public Text()
         {
             TextCollection = new List<Sentence>();
+        }
+
+        public Text(List<Sentence> textCollection)
+        {
+            TextCollection = textCollection;
         }
 
         public void RemoveWordsWithFirstConsonant(int wordLenght)
@@ -37,26 +38,17 @@ namespace Task2_TextHandler.TextObject
         {
             try
             {
-                var words = from x in TextCollection[indexSentense].SentenceList.FindAll(x => x is Word).Cast<Word>()
-                    where x.WordString.Length == wordLenght
-                    select x;
                 foreach (var word in TextCollection[indexSentense].SentenceList.FindAll(x => x is Word).Cast<Word>())
                 {
                     if (word.WordString.Length == wordLenght)
                         word.WordString = newValue;
                 }
             }
-            catch (IndexOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException ex)
             {
-                Console.WriteLine(ex);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
+                Console.WriteLine("Index was out of range");
             }
         }
-
-
 
         public List<string> FindWordsOfPredeterminedLength(int wordLength)
         {
@@ -89,13 +81,13 @@ namespace Task2_TextHandler.TextObject
 
         public override string ToString()
         {
-            var strout = string.Empty;
+            StringBuilder strout = new StringBuilder();
             foreach (var x in TextCollection)
             {
-                strout += " " + x.ToString();
+                strout.Append(x + " ");
             }
                 
-            return strout;
+            return strout.ToString();
         }
 
         public object Clone()

@@ -6,6 +6,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Task2_TextHandler.Interfaces;
 
 namespace Task2_TextHandler.TextObject
 {
