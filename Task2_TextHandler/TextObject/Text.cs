@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.SqlServer.Server;
 
 namespace Task2_TextHandler.TextObject
 {
@@ -29,6 +30,29 @@ namespace Task2_TextHandler.TextObject
                     if (x.FirstLetterIsConsonant() == true && x.WordString.Length == wordLenght)
                         sentence.SentenceList.Remove(x);
                 } 
+            }
+        }
+
+        public void ReplaceWords(int indexSentense, int wordLenght, string newValue)
+        {
+            try
+            {
+                var words = from x in TextCollection[indexSentense].SentenceList.FindAll(x => x is Word).Cast<Word>()
+                    where x.WordString.Length == wordLenght
+                    select x;
+                foreach (var word in TextCollection[indexSentense].SentenceList.FindAll(x => x is Word).Cast<Word>())
+                {
+                    if (word.WordString.Length == wordLenght)
+                        word.WordString = newValue;
+                }
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
         }
 
@@ -76,7 +100,13 @@ namespace Task2_TextHandler.TextObject
 
         public object Clone()
         {
-            return new Text(this.TextCollection);
+            var clone = new List<Sentence>(TextCollection.Count);
+            foreach (var sentence in TextCollection)
+            {
+                clone.Add((Sentence)sentence.Clone());
+            }
+
+            return new Text(clone);
         }
     }
 }

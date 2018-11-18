@@ -8,7 +8,7 @@ namespace Task2_TextHandler.TextObject
 {
     public class Word : ISentenceElement
     {
-        public string WordString { get; }
+        public string WordString { get; set; }
 
         public Word(string wordString)
         {
@@ -22,7 +22,7 @@ namespace Task2_TextHandler.TextObject
 
         public bool FirstLetterIsConsonant()
         {
-            return "aAeEiIoOuUyY".Any(x => WordString[0] == x);
+            return "aAeEiIoOuUyY".Any(x => x != WordString[0]);
         }
 
     }
