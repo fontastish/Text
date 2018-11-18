@@ -28,20 +28,20 @@ namespace Task2_TextHandler.TextObject
             return new Text(clone);
         }
 
-        public void RemoveWordsWithFirstConsonant(int wordLength)
+        public void RemoveWordsWithFirstConsonant(int wordLenght)
         {
             foreach (var sentence in TextCollection)
             foreach (var x in sentence.SentenceList.FindAll(x => x is Word).Cast<Word>())
-                if (x.FirstLetterIsConsonant() && x.WordString.Length == wordLength)
+                if (x.FirstLetterIsConsonant() && x.WordString.Length == wordLenght)
                     sentence.SentenceList.Remove(x);
         }
 
-        public void ReplaceWords(int indexSentence, int wordLength, string newValue)
+        public void ReplaceWords(int indexSentense, int wordLenght, string newValue)
         {
             try
             {
-                foreach (var word in TextCollection[indexSentence].SentenceList.FindAll(x => x is Word).Cast<Word>())
-                    if (word.WordString.Length == wordLength)
+                foreach (var word in TextCollection[indexSentense].SentenceList.FindAll(x => x is Word).Cast<Word>())
+                    if (word.WordString.Length == wordLenght)
                         word.Replace(newValue);
             }
             catch (ArgumentOutOfRangeException)
@@ -74,10 +74,10 @@ namespace Task2_TextHandler.TextObject
 
         public override string ToString()
         {
-            var stringout = new StringBuilder();
-            foreach (var x in TextCollection) stringout.Append(x + " ");
+            var strout = new StringBuilder();
+            foreach (var x in TextCollection) strout.Append(x + " ");
 
-            return stringout.ToString();
+            return strout.ToString();
         }
     }
 }
