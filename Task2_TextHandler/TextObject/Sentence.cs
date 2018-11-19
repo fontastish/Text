@@ -46,16 +46,16 @@ namespace Task2_TextHandler.TextObject
 
         public override string ToString()
         {
-            var strout = new StringBuilder();
+            var stringout = new StringBuilder();
             foreach (var x in SentenceList)
             {
                 if (x is PunctuationSign)
-                    strout.Remove(strout.Length - 1, 1);
-                strout.Append(x.GetSentenceElementString() + ' ');
+                    stringout.Remove(stringout.Length - 1, 1);
+                stringout.Append(x.GetSentenceElementString() + ' ');
             }
 
-            strout.Remove(strout.Length - 1, 1);
-            return strout.ToString();
+            stringout.Remove(stringout.Length - 1, 1);
+            return stringout.ToString();
         }
     }
 }

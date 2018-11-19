@@ -55,7 +55,7 @@ namespace Task2_TextHandler.Worker
                     }
                 }
 
-                if (isCompletedSentence) //добавляем готовое преложение, меняем переменную для создания нового
+                if (isCompletedSentence)
                     text.AddSentence(sentence);
             }
 
