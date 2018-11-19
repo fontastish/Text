@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Task2_TextHandler.Interfaces;
 
 namespace Task2_TextHandler.Worker
@@ -15,11 +16,22 @@ namespace Task2_TextHandler.Worker
 
         public string Read()
         {
-            string text;
-            using (var stream = new FileStream(FileName, FileMode.Open))                                                                                     
+            string text = string.Empty;
+            try
             {
-                var reader = new StreamReader(stream);
-                text = reader.ReadToEnd();
+                using (var stream = new FileStream(FileName, FileMode.Open))
+                {
+                    var reader = new StreamReader(stream);
+                    text = reader.ReadToEnd();
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("File not found");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error");
             }
 
             return text.Replace("\r\n", " ");
