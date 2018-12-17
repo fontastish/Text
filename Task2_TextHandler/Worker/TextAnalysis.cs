@@ -10,37 +10,41 @@ namespace Task2_TextHandler.Worker
 {
     public class TextAnalysis
     {
-        public Dictionary<Word, int> Statistic { get; set; }
+        public Dictionary<string, List<Word>> Statistic { get; set; }
 
         public TextAnalysis(Text parseText)
         {
-            Statistic = new Dictionary<Word, int>();
+            Statistic = new Dictionary<string, List<Word>>();
             Analysis(parseText);
         }
 
         public void Analysis(Text parseText)
         {
             Text tempParseText;
-            var linqElements = (from u in parseText.TextCollection
+            var linqElements = from u in parseText.TextCollection
                 from e in u.SentenceList
                 where e is Word
                 orderby e
-                select e);
+                select e;
 
             var tempList = linqElements.Cast<Word>().ToList();
+            //var wordList = new List<Word>();
+
             for (var i = 0; i < tempList.Count; i++)
             {
+                var wordList = new List<Word>();
                 for (var j = i; j < tempList.Count; j++)
                 {
                     if (tempList[i].WordString != tempList[j].WordString)
                     {
-                        Statistic.Add(tempList[i],j-i);
+                        Statistic.Add(tempList[i].WordString, wordList);
                         i = j - 1;
                         break;
                     }
+                    wordList.Add(tempList[j]);         
                     if (j == tempList.Count - 1)
                     {
-                        Statistic.Add(tempList[i], j - i + 1);
+                        Statistic.Add(tempList[i].WordString, wordList);
                         i = j;
                     }
                 }
@@ -55,11 +59,11 @@ namespace Task2_TextHandler.Worker
             foreach (var x in Statistic)
             {
                 temp.Clear();
-                for (int i = 0; i < x.Value; i++)
+                for (int i = 0; i < x.Value.Count; i++)
                 {
-                    temp.Append(x.Key.NumberString);
+                    temp.Append(" " + x.Value[i].NumberString);
                 }
-                stringOut.Append(x.Key + "........" + x.Value + ":" + temp + '\n');              
+                stringOut.Append(x.Key +".........." + x.Value.Count + ":" + temp + '\n');
             }
 
             return stringOut.ToString();

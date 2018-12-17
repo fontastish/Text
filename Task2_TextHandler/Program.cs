@@ -28,7 +28,7 @@ namespace Task2_TextHandler
             Console.WriteLine(line);
             text.ReplaceWords(0, 5, "Stas");
             Console.WriteLine(text);
-
+                // Анализ текста 
             TextAnalysis hello = new TextAnalysis(text);
             Console.WriteLine(hello.PrintTable());
             Console.ReadKey();
