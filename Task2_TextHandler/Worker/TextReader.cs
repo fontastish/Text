@@ -4,7 +4,7 @@ using Task2_TextHandler.Interfaces;
 
 namespace Task2_TextHandler.Worker
 {
-    public class TextReader : IFileReader
+    public class TextReader
     {
         public string FileName { get; }
 

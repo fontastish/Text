@@ -20,7 +20,6 @@ namespace Task2_TextHandler.Worker
 
         public void Analysis(Text parseText)
         {
-            Text tempParseText;
             var linqElements = from u in parseText.TextCollection
                 from e in u.SentenceList
                 where e is Word
@@ -28,7 +27,6 @@ namespace Task2_TextHandler.Worker
                 select e;
 
             var tempList = linqElements.Cast<Word>().ToList();
-            //var wordList = new List<Word>();
 
             for (var i = 0; i < tempList.Count; i++)
             {
