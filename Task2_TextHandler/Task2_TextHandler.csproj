@@ -51,6 +51,7 @@
     <Compile Include="TextObject\Sentence.cs" />
     <Compile Include="TextObject\Text.cs" />
     <Compile Include="TextObject\Word.cs" />
+    <Compile Include="Worker\TextAnalysis.cs" />
     <Compile Include="Worker\TextParser.cs" />
     <Compile Include="Worker\TextReader.cs" />
   </ItemGroup>

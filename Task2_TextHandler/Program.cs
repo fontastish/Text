@@ -26,8 +26,11 @@ namespace Task2_TextHandler
             Console.WriteLine(copyOfText);
             //4      В некотором предложении текста слова заданной длины заменить указанной подстрокой, длина которой может не совпадать с длиной слова.
             Console.WriteLine(line);
-            text.ReplaceWords(0, 5, "!!!!");
+            text.ReplaceWords(0, 5, "Stas");
             Console.WriteLine(text);
+
+            TextAnalysis hello = new TextAnalysis(text);
+            Console.WriteLine(hello.PrintTable());
             Console.ReadKey();
         }
     }

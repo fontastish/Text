@@ -34,7 +34,7 @@ namespace Task2_TextHandler.Worker
                 Console.WriteLine("Error");
             }
 
-            return text.Replace("\r\n", " ");
+            return text;
         }
     }
 }

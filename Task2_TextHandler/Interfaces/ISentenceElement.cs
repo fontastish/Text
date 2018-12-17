@@ -3,5 +3,6 @@
     public interface ISentenceElement
     {
         string GetSentenceElementString();
+        int NumberString { get; }
     }
 }

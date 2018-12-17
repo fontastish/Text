@@ -19,6 +19,7 @@ namespace Task2_TextHandler.Worker
             var sentence = new Sentence();
             var sentenceBuilder = new StringBuilder();
             var isCompletedSentence = true;
+            int countString = 1;
             for (var i = 0; i < Text.Length; i++)
             {
                 if (isCompletedSentence) 
@@ -33,7 +34,7 @@ namespace Task2_TextHandler.Worker
                     i++;
                     if (!char.IsLetter(Text[i]))
                     {
-                        sentence.AddSentenceElement(new Word(sentenceBuilder.ToString()));
+                        sentence.AddSentenceElement(new Word(sentenceBuilder.ToString(), countString));
                         sentenceBuilder.Clear();
                     }
                 }
@@ -49,12 +50,14 @@ namespace Task2_TextHandler.Worker
                     if (!char.IsPunctuation(Text[i]) || i + 1 == Text.Length)
                     {
                         sentence.AddSentenceElement(
-                            new PunctuationSign(sentenceBuilder.ToString(), isCompletedSentence));
+                            new PunctuationSign(sentenceBuilder.ToString(), isCompletedSentence, countString));
                         sentenceBuilder.Clear();
                         break;
                     }
                 }
 
+                if (Text[i] == '\n')
+                    countString++;
                 if (isCompletedSentence)
                     text.AddSentence(sentence);
             }
